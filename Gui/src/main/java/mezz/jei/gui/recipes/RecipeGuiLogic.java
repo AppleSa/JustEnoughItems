@@ -69,6 +69,8 @@ public class RecipeGuiLogic implements IRecipeGuiLogic {
 		List<IRecipeCategory<?>> recipeCategories = recipeManager.createRecipeCategoryLookup()
 			.get()
 			.toList();
+		System.out.println("\ningredientManager: " + ingredientManager);
+		ingredientManager
 		this.state = IngredientLookupState.create(
 			recipeManager,
 			focusFactory.getEmptyFocusGroup(),
