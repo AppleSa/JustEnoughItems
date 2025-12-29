@@ -148,8 +148,22 @@ public class IngredientLookupState implements ILookupState {
 	@Override
 	public IFocusedRecipes<?> getFocusedRecipes() {
 		if (focusedRecipes == null) {
-			final IRecipeCategory<?> recipeCategory = recipeCategories.get(recipeCategoryIndex);
-			focusedRecipes = FocusedRecipes.create(focuses, recipeManager, recipeCategory);
+			System.out.println("=== Recipe Categories Debug ===");
+	        System.out.println("Total categories: " + recipeCategories.size());
+	        System.out.println("Current index: " + recipeCategoryIndex);
+	        System.out.println("recipeCategories: " + recipeCategories);
+	        System.out.println("\nDetailed list:");
+	        for (int i = 0; i < recipeCategories.size(); i++) {
+	            IRecipeCategory<?> cat = recipeCategories.get(i);
+	            System.out.println("  [" + i + "] " + cat);
+	            System.out.println("      Class: " + cat.getClass().getName());
+	            // 如果 IRecipeCategory 有 getRecipeType() 方法，也可以输出
+	            // System.out.println("      Type: " + cat.getRecipeType());
+	        }
+	        final IRecipeCategory<?> recipeCategory = recipeCategories.get(recipeCategoryIndex);
+	        System.out.println("\nSelected category: " + recipeCategory);
+	        System.out.println("===============================\n");
+	        focusedRecipes = FocusedRecipes.create(focuses, recipeManager, recipeCategory);
 		}
 		return focusedRecipes;
 	}
